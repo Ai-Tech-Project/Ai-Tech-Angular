@@ -7,6 +7,7 @@ import {WebSiteRoutingModule} from "./web-site-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './home/home.component';
+import { ServicesComponent } from './services/services.component';
 
 
 
@@ -15,7 +16,8 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     MainComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ServicesComponent
   ],
   imports: [
     CommonModule,
