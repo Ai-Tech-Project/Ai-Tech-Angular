@@ -1,0 +1,38 @@
+/* Custom styles for the congratulations message */
+.text-center {
+  font-family: 'Arial', sans-serif;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+p.lead {
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.btn-warning {
+  border-radius: 50px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: white;
+}
+
+.btn-lg {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -6,6 +6,9 @@ import {ChatbotComponent} from "./chatbot/chatbot.component";
 import {AboutComponent} from "./about/about.component";
 import {ContactComponent} from "./contact/contact.component";
 import {ServicesComponent} from "./services/services.component";
+import {DescCertifComponent} from "./desc-certif/desc-certif.component";
+import {ResultCertifComponent} from "./result-certif/result-certif.component";
+import {CertificationFormComponent} from "./certification-form/certification-form.component";
 
 
 const routes: Routes = [
@@ -17,7 +20,11 @@ const routes: Routes = [
       {path:'chatbot' , component: ChatbotComponent},
       {path:'contact', component: ContactComponent},
       {path:'about', component: AboutComponent},
-      {path:'services',component: ServicesComponent}
+      {path:'services',component: ServicesComponent},
+      {path:'certif',component: CertificationFormComponent},
+      {path:'descCertif',component: DescCertifComponent},
+      {path:'resultCertif',component: ResultCertifComponent}
+
     ]
   }
 ];

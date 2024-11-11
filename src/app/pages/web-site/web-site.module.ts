@@ -8,6 +8,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './home/home.component';
 import { ServicesComponent } from './services/services.component';
+import { ResultCertifComponent } from './result-certif/result-certif.component';
+import { DescCertifComponent } from './desc-certif/desc-certif.component';
+import {CertificationFormComponent} from "./certification-form/certification-form.component";
+import { QuizDescriptionComponent } from './quiz-description/quiz-description.component';
+import { QuizResultComponent } from './quiz-result/quiz-result.component';
 
 
 
@@ -17,7 +22,12 @@ import { ServicesComponent } from './services/services.component';
     MainComponent,
     NavbarComponent,
     HomeComponent,
-    ServicesComponent
+    ServicesComponent,
+    ResultCertifComponent,
+    DescCertifComponent,
+    CertificationFormComponent,
+    QuizDescriptionComponent,
+    QuizResultComponent,
   ],
   imports: [
     CommonModule,

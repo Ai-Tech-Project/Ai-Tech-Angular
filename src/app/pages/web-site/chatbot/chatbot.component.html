@@ -1,30 +1,41 @@
 <!-- Hero Start -->
-<div class="container-fluid pt-5 bg-primary hero-header">
+<div class="container-fluid pt-5 bg-primary hero-header mb-5">
   <div class="container pt-5">
     <div class="row g-5 pt-5">
+      <!-- Text Section -->
       <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-        <h1 class="display-4 text-white mb-4 animated slideInRight">Our Chatbot</h1>
+        <h1 class="display-4 text-white mb-4 animated fadeInDown">Meet Our Chatbot</h1>
+        <p class="text-white-50 mb-4 animated fadeInLeft">
+          Get instant answers and assistance anytime, anywhere. Just start chatting below!
+        </p>
+        <a href="#chatbot-section" class="btn btn-light btn-lg animated fadeInUp">Start Chatting</a>
+      </div>
+
+      <!-- Optional Image Section -->
+      <div class="col-lg-6 d-none d-lg-block text-center">
+        <img src="assets/img/robot.png" alt="Chatbot Illustration" class="img-fluid animated zoomIn" style="max-height: 300px;">
       </div>
     </div>
   </div>
 </div>
 <!-- Hero End -->
 
+
 <section>
   <div class="container py-4">
     <div class="row">
       <div class="col-md-6 col-lg-5 col-xl-3 mb-4 mb-md-0">
 
-        <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chats</h5>
 
-        <div class="card">
-          <div class="card-body">
-            <ul class="list-unstyled mb-0">
+        <div class="card sticky-top" style="margin-top: 20px; padding: 15px;">
+
+        <div class="card-body">
+            <ul class="list-unstyled mb-0" >
               <li class="p-2 border-bottom bg-body-tertiary">
                 <a href="#!" class="d-flex justify-content-between">
                   <div class="d-flex flex-row">
                     <div class="pt-1">
-                      <p class="small text-muted">Hello, Are you there?</p>
+                      <p class="small text-muted">Quiz 1 </p>
                     </div>
                   </div>
                   <div class="pt-1">
@@ -38,7 +49,7 @@
                 <a href="#!" class="d-flex justify-content-between">
                   <div class="d-flex flex-row">
                     <div class="pt-1">
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                      <p class="small text-muted">Quiz 2</p>
                     </div>
                   </div>
                   <div class="pt-1">
@@ -47,6 +58,7 @@
                   </div>
                 </a>
               </li>
+
             </ul>
 
           </div>
@@ -54,68 +66,59 @@
 
       </div>
 
+
       <div class="col-md-6 col-lg-7 col-xl-9">
 
-        <ul class="list-unstyled">
-          <li class="d-flex justify-content-between mb-4">
-            <div class="card w-100">
-              <div class="card-header d-flex justify-content-between p-3">
-                <p class="fw-bold mb-0">Lara Croft</p>
-                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
-              </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium.
+        <ul class="list-unstyled" *ngFor="let q of listQuestion">
+          <!-- Message de l'utilisateur (question) à droite -->
+          <li class="d-flex justify-content-end mb-4">
+            <div class=" w-75">
+                <p class="mb-0 user-message">
+                  {{ q.question_text }}
                 </p>
               </div>
-            </div>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                 class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+
           </li>
-          <li class="d-flex justify-content-between mb-4">
-            <img src="assets/img/icons/simple.png" alt="avatar"
-                 class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-            <div class="card">
+
+          <!-- Message du bot (réponse) à gauche -->
+          <li class="d-flex justify-content-start mb-4">
+            <div class="card w-100">
               <div class="card-header d-flex justify-content-between p-3">
-                <p class="fw-bold mb-0">Ai-Bot</p>
+                <p class="fw-bold mb-0">Ai-Tech</p>
                 <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
               </div>
               <div class="card-body">
-                <p class="mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                  labore et dolore magna aliqua.
+                <p class="mb-0 bot-message">
+                  {{ q.answer_text }}
                 </p>
               </div>
             </div>
           </li>
-          <li class="d-flex justify-content-between mb-4">
-            <div class="card w-100">
-              <div class="card-header d-flex justify-content-between p-3">
-                <p class="fw-bold mb-0">Lara Croft</p>
-                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
-              </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium.
-                </p>
-              </div>
-            </div>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                 class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-          </li>
-
-
-
-          <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
-            <textarea class="form-control bg-body-tertiary" id="exampleFormControlInput2"  rows="2" placeholder="Ask a question related to our services..."></textarea>
-            <a class="ms-1 text-muted" href="#!"><i class="fas fa-paperclip"></i></a>
-            <a class="ms-3 text-muted" href="#!"><i class="fas fa-smile"></i></a>
-            <a class="ms-3" href="#!"><i class="fas fa-paper-plane"></i></a>
-          </div>
-
         </ul>
+
+        <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+          <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+            <div class="position-relative w-100">
+      <textarea
+        class="form-control bg-body-tertiary"
+        formControlName="question_text"
+        rows="2"
+        placeholder="Ask a question related to our services..."
+        style="padding-right: 40px;"></textarea>
+
+              <!-- Bouton placé à l'intérieur du textarea -->
+              <button
+                type="submit"
+                class="btn btn-primary position-absolute"
+                [disabled]="questionForm.invalid"
+                style="bottom: 10px; right: 10px;">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+
+
+          </div>
+        </form>
 
       </div>
 

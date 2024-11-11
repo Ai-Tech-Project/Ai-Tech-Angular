@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
-
-
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-
-  { path: '', loadChildren: () => import('./pages/web-site/web-site.module').then(m => m.WebSiteModule) },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirection pour la racine
+  { path: 'home', loadChildren: () => import('./pages/web-site/web-site.module').then(m => m.WebSiteModule) }
 ];
+
+
 
 
 

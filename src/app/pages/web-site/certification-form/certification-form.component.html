@@ -1,0 +1,71 @@
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header">
+  <div class="container pt-4">
+    <!-- Hero Content Here -->
+  </div>
+</div>
+<!-- Hero End -->
+<div class="container my-5">
+  <form [formGroup]="certificationForm" (ngSubmit)="submitAnswer()" id="quizForm">
+    <div *ngIf="currentQuestionIndex < listQuestions.length" class="row">
+      <!-- Question Section -->
+      <div class="col-lg-6 pe-3">
+        <h3 class="mb-4">
+          Question {{ currentQuestionIndex + 1 }}: {{ listQuestions[currentQuestionIndex]?.question_text }}
+        </h3>
+        <div class="d-flex flex-column">
+          <div *ngFor="let option of listQuestions[currentQuestionIndex].options" class="mb-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                [id]="'option' + currentQuestionIndex + option.optionText"
+                [value]="option"
+                [formControlName]="listQuestions[currentQuestionIndex].id"
+              />
+              <label class="form-check-label" [for]="'option' + currentQuestionIndex + option.optionText">
+                {{ option.optionText }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-success" [disabled]="isSubmitted">Submit Answer</button>
+        </div>
+
+        <div *ngIf="isSubmitted && currentQuestionIndex < listQuestions.length - 1" class="text-center mt-4">
+          <button type="button" class="btn btn-primary" (click)="nextQuestion()">Next Question</button>
+        </div>
+      </div>
+
+      <!-- Result Section -->
+      <div class="col-lg-6 ps-3 text-start">
+        <div class="result-container alert alert-info" *ngIf="isSubmitted" style="height: 200px; overflow-y: auto;">
+          <h5>Result</h5>
+          <div [innerHTML]="result"></div>
+        </div>
+        <!-- Congratulations Message -->
+        <div *ngIf="answeredQuestions == listQuestions.length" class="text-center mt-5 py-5 bg-light rounded shadow">
+          <h4 class="text-success mb-4">Congratulations! You have completed the quiz.</h4>
+
+          <p class="lead mb-4">Well done! You've answered all the questions. Would you like to continue the discussion with our chatbot?</p>
+
+          <!-- Chatbot Completion Button -->
+          <div class="mt-3">
+            <a type="button" class="btn btn-warning btn-lg px-4 py-2" routerLink="/chatbot">
+              <i class="bi bi-chat-left-dots me-2"></i> Complete the discussion with our chatbot
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+  <div class="mt-4 text-center">
+    <p>Questions answered: {{ answeredQuestions }} / {{ listQuestions.length }}</p>
+    <p>Questions remaining: {{ listQuestions.length - answeredQuestions }}</p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.user-message {
+  background-color: #f1f1f1; /* Couleur de fond bleu clair pour l'utilisateur */
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+.bot-message {
+  background-color: #FFFFFF; /* Couleur de fond gris clair pour le bot */
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: none;
+}
+
+.card-body {
+  background-color: #ffffff;
+}
+
+.card.sticky-top {
+  margin-top: 50px; /* Ajustez cette valeur pour l'espace voulu */
+}
+
+
