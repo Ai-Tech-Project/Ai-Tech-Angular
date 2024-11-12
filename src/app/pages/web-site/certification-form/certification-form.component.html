@@ -5,67 +5,89 @@
   </div>
 </div>
 <!-- Hero End -->
+
 <div class="container my-5">
-  <form [formGroup]="certificationForm" (ngSubmit)="submitAnswer()" id="quizForm">
+  <!-- Quiz Progress Section -->
+  <div class="mt-5 text-center my-4">
+    <div class="progress">
+      <div
+        class="progress-bar progress-bar-striped bg-success"
+        role="progressbar"
+        [style.width.%]="(answeredQuestions / listQuestions.length) * 100"
+        [attr.aria-valuenow]="(answeredQuestions / listQuestions.length) * 100"
+        aria-valuemin="0"
+        aria-valuemax="100">
+        {{ answeredQuestions }} / {{ listQuestions.length }}
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="certificationForm" (ngSubmit)="submitAnswer()" id="quizForm" *ngIf="answeredQuestions <= listQuestions.length">
     <div *ngIf="currentQuestionIndex < listQuestions.length" class="row">
       <!-- Question Section -->
-      <div class="col-lg-6 pe-3">
-        <h3 class="mb-4">
-          Question {{ currentQuestionIndex + 1 }}: {{ listQuestions[currentQuestionIndex]?.question_text }}
-        </h3>
-        <div class="d-flex flex-column">
-          <div *ngFor="let option of listQuestions[currentQuestionIndex].options" class="mb-3">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                [id]="'option' + currentQuestionIndex + option.optionText"
-                [value]="option"
-                [formControlName]="listQuestions[currentQuestionIndex].id"
-              />
-              <label class="form-check-label" [for]="'option' + currentQuestionIndex + option.optionText">
-                {{ option.optionText }}
-              </label>
+      <div class="col-lg-6 pe-3 mb-4">
+        <div class="card shadow-lg p-4">
+          <h3 class="mb-4 text-primary">
+            Question {{ currentQuestionIndex + 1 }}: {{ listQuestions[currentQuestionIndex] ? listQuestions[currentQuestionIndex].question_text : 'Loading...' }}
+          </h3>
+          <div class="d-flex flex-column" style="height: 200px; overflow-y: auto;">
+            <div *ngFor="let option of listQuestions[currentQuestionIndex].options" class="mb-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  [id]="'option' + currentQuestionIndex + option.optionText"
+                  [value]="option"
+                  [formControlName]="listQuestions[currentQuestionIndex].id"
+                />
+                <label class="form-check-label" [for]="'option' + currentQuestionIndex + option.optionText">
+                  {{ option.optionText }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-3 d-flex justify-content-center align-items-center">
+            <div class="row w-100"> <!-- Row container -->
+              <div class="col-lg-6 d-flex justify-content-start"> <!-- Left section with the arrows -->
+                <!-- Back Link (Styled as Button) -->
+                <a class="btn btn-lg px-4 " (click)="previousQuestion()">
+                  <i class="bi bi-arrow-left-circle me-2"></i>
+                </a>
+
+                <!-- Next Question Link (Styled as Button) -->
+                <a class="btn btn-lg px-4 py-2" (click)="nextQuestion()">
+                  <i class="bi bi-arrow-right-circle me-2"></i>
+                </a>
+              </div>
+
+              <div class="col-lg-6 d-flex justify-content-end"> <!-- Right section with the submit button -->
+                <!-- Submit Answer Button with spacing -->
+                <button type="submit" class="btn btn-success btn-lg px-4 py-2 me-3" [disabled]="isSubmitted">
+                  <i class="bi bi-check-circle me-2"></i> Submit
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="text-center mt-4">
-          <button type="submit" class="btn btn-success" [disabled]="isSubmitted">Submit Answer</button>
-        </div>
-
-        <div *ngIf="isSubmitted && currentQuestionIndex < listQuestions.length - 1" class="text-center mt-4">
-          <button type="button" class="btn btn-primary" (click)="nextQuestion()">Next Question</button>
-        </div>
       </div>
+      <!-- Question Section -->
 
       <!-- Result Section -->
-      <div class="col-lg-6 ps-3 text-start">
-        <div class="result-container alert alert-info" *ngIf="isSubmitted" style="height: 200px; overflow-y: auto;">
-          <h5>Result</h5>
-          <div [innerHTML]="result"></div>
-        </div>
-        <!-- Congratulations Message -->
-        <div *ngIf="answeredQuestions == listQuestions.length" class="text-center mt-5 py-5 bg-light rounded shadow">
-          <h4 class="text-success mb-4">Congratulations! You have completed the quiz.</h4>
-
-          <p class="lead mb-4">Well done! You've answered all the questions. Would you like to continue the discussion with our chatbot?</p>
-
-          <!-- Chatbot Completion Button -->
-          <div class="mt-3">
-            <a type="button" class="btn btn-warning btn-lg px-4 py-2" routerLink="/chatbot">
-              <i class="bi bi-chat-left-dots me-2"></i> Complete the discussion with our chatbot
-            </a>
+      <div  *ngIf="isSubmitted" class="col-lg-6 pe-3 mb-4">
+        <div class="card shadow-lg p-4">
+          <div class="alert alert-info" *ngIf="isSubmitted">
+            <h5>Result</h5>
+            <div [innerHTML]="result"></div>
           </div>
         </div>
-
       </div>
+      <!-- Result Section -->
     </div>
-
+    <!-- Button to navigate to next page after quiz completion -->
+    <div *ngIf="answeredQuestions === listQuestions.length && isSubmitted" class="text-center mt-4">
+      <a routerLink="/resultCertif" class="btn btn-primary btn-lg" >Terminé</a>
+    </div>
   </form>
-
-  <div class="mt-4 text-center">
-    <p>Questions answered: {{ answeredQuestions }} / {{ listQuestions.length }}</p>
-    <p>Questions remaining: {{ listQuestions.length - answeredQuestions }}</p>
-  </div>
 </div>
+
+

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from "../../../models/Question";
 import { QuestionService } from "../../../services/question/question.service";
-import { Option } from "../../../models/Option";
 import { Attempt } from '../../../models/Attempt'; // Import the Attempt interface
 
 @Component({
@@ -47,6 +46,16 @@ export class CertificationFormComponent implements OnInit {
   nextQuestion() {
     this.currentQuestionIndex++;
     this.isSubmitted = false;
+    // Reset the form control for the new question
+    this.certificationForm.get(this.listQuestions[this.currentQuestionIndex]?.id)?.reset();
+  }
+
+  previousQuestion() {
+    if (this.currentQuestionIndex > 0) {
+      this.currentQuestionIndex--;
+      // Reset the form control for the previous question
+      this.certificationForm.get(this.listQuestions[this.currentQuestionIndex]?.id)?.reset();
+    }
   }
 
   submitAnswer(): void {
@@ -67,13 +76,18 @@ export class CertificationFormComponent implements OnInit {
     // Check if the answer is correct and display feedback
     const correctOption = currentQuestion.options.find(option => option.isCorrect);
     if (selectedOption.isCorrect) {
-      this.result = `Bravo, vous avez répondu correctement !<br>${currentQuestion.answer_text}<br>`;
+      this.result = `
+        <p class="text-success">Bravo, vous avez répondu correctement !</p>
+        <p><strong>La bonne réponse: </strong>${currentQuestion.answer_text}</p>
+      `;
     } else {
-      this.result = `Désolé, la bonne réponse était : ${correctOption?.optionText}<br>${currentQuestion.answer_text}<br>`;
+      this.result = `
+        <p class="text-danger">Désolé, la bonne réponse était: ${correctOption?.optionText}</p>
+        <p><strong>Description:</strong> ${currentQuestion.answer_text}</p>
+      `;
     }
-
-    this.isSubmitted = true;
     this.answeredQuestions++;
+    this.isSubmitted = true;
   }
 
   displayAttempts() {

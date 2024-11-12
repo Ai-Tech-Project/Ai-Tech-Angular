@@ -1,1 +1,53 @@
-<p>desc-certif works!</p>
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header">
+  <div class="container pt-4">
+    <h1 class="text-white text-center">Certificat Description & Choix du Module</h1>
+  </div>
+</div>
+<!-- Hero End -->
+
+<!-- Main Content -->
+<div class="container my-5">
+  <!-- Description Section -->
+  <div class="row">
+    <!-- Certificat Description -->
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-lg p-4">
+        <h3 class="mb-4 text-primary">Description du Certificat</h3>
+        <p>
+          Ce certificat atteste de la réussite de votre formation dans les domaines de compétence suivants :
+          - Développement web
+          - Gestion de projet
+          - Design UX/UI
+          Vous pourrez ajouter ce certificat à votre profil professionnel.
+        </p>
+      </div>
+    </div>
+
+    <!-- Module Selection Section -->
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-lg p-4">
+        <h3 class="mb-4 text-primary">Choisissez un Module</h3>
+        <form>
+          <div class="form-group mb-3">
+            <label for="moduleSelect">Sélectionnez un module :</label>
+            <select class="form-select" id="moduleSelect" aria-label="Choisir un module">
+              <option selected>Sélectionner...</option>
+              <option value="1">Module 1: Introduction au développement web</option>
+              <option value="2">Module 2: Design et UX/UI</option>
+              <option value="3">Module 3: Gestion de projet</option>
+            </select>
+          </div>
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Choisir le Module</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Section -->
+  <div class="text-center mt-5">
+    <a routerLink="/certif" class="btn btn-success btn-lg">Passer au Cour</a>
+  </div>
+</div>

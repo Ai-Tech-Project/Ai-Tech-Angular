@@ -1,1 +1,75 @@
-<p>result-certif works!</p>
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header">
+  <div class="container pt-4">
+
+  </div>
+</div>
+<!-- Hero End -->
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header mb-5">
+  <div class="container pt-5">
+    <div class="row g-5 pt-5">
+      <!-- Text Section -->
+      <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
+        <h1 class="text-white">Résultats du Quiz</h1>
+        <p class="text-white">Voici vos résultats et des conseils pour améliorer vos compétences.</p>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
+            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+            <li class="breadcrumb-item text-white active" aria-current="page">Contact Us</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Optional Image Section -->
+      <div class="col-lg-6 d-none d-lg-block text-center">
+        <img src="assets/img/robot.png" alt="Chatbot Illustration" class="img-fluid animated zoomIn" style="max-height: 200px;">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hero End -->
+
+<!-- Result Section -->
+<div class="container my-5">
+  <!-- Display Results -->
+  <div class="row">
+    <!-- Result Section -->
+    <div class="container my-5">
+      <div class="row">
+        <!-- Result Section -->
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-lg p-4">
+            <h3 class="mb-4 text-primary">Votre Résultat</h3>
+            <div class="alert alert-info">
+              <h5 class="text-primary">Score Final:</h5>
+              <div [innerHTML]="result"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advice Section -->
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-lg p-4">
+            <h3 class="mb-4 text-primary">Conseils pour Améliorer</h3>
+            <ul>
+              <li>Révisez les sections sur les concepts clés.</li>
+              <li>Pratiquez plus de quiz pour améliorer votre compréhension.</li>
+              <li>Consultez les ressources supplémentaires recommandées dans le module.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Button to navigate to the chatbot -->
+  <div class="text-center mt-4">
+    <a routerLink="/chatbot" class="btn btn-warning btn-lg" >
+      <i class="bi bi-chat-left-dots me-2"></i> Questionner le Chatbot
+    </a>
+  </div>
+</div>
+
